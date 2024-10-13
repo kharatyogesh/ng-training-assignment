@@ -1,0 +1,32 @@
+.form-control.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+.text-danger {
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Ensure the form has no additional padding */
+.card-body {
+  padding: 20px;
+}
+
+/* Buttons aligned at the bottom of the card */
+.card-footer {
+  padding-top: 0;
+  padding-bottom: 0;
+  justify-content: flex-end;
+}
+
+/* Optional: To ensure the buttons have the same width */
+.btn {
+  width: auto;
+}
+
+/* Styling error messages */
+.text-danger {
+  font-size: 0.875rem;
+  margin-top: 5px;
+}
+

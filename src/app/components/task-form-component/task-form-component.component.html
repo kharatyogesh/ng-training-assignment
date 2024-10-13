@@ -1,0 +1,64 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h5>New Task</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+            <!-- First Row: Assigned To and Status -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="assignedTo" class="form-label">Assigned To</label>
+                <input type="text" id="assignedTo" class="form-control" formControlName="assignedTo" />
+                <div *ngIf="taskForm.get('assignedTo')?.invalid && taskForm.get('assignedTo')?.touched" class="text-danger">
+                  Assigned To is required.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="status" class="form-label">Status</label>
+                <input type="text" id="status" class="form-control" formControlName="status" />
+                <div *ngIf="taskForm.get('status')?.invalid && taskForm.get('status')?.touched" class="text-danger">
+                  Status is required.
+                </div>
+              </div>
+            </div>
+
+            <!-- Second Row: Due Date and Priority -->
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="dueDate" class="form-label">Due Date</label>
+                <input type="date" id="dueDate" class="form-control" formControlName="dueDate" />
+                <div *ngIf="taskForm.get('dueDate')?.invalid && taskForm.get('dueDate')?.touched" class="text-danger">
+                  Due Date is required.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="priority" class="form-label">Priority</label>
+                <input type="text" id="priority" class="form-control" formControlName="priority" />
+                <div *ngIf="taskForm.get('priority')?.invalid && taskForm.get('priority')?.touched" class="text-danger">
+                  Priority is required.
+                </div>
+              </div>
+            </div>
+
+            <!-- Third Row: Description -->
+            <div class="row mb-3">
+              <div class="col-md-12">
+                <label for="description" class="form-label">Description</label>
+                <textarea id="description" class="form-control" rows="3" formControlName="description"></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Action Buttons (Aligned to Bottom Right) -->
+        <div class="card-footer d-flex justify-content-end">
+          <button type="button" class="btn btn-danger me-2" (click)="onCancel()">Cancel</button>
+          <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

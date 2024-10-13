@@ -1,0 +1,71 @@
+<div class="container mt-4">
+  <!-- Top Section: Task Management -->
+  <div class="row mb-4">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between">
+          <h5>All Tasks</h5>
+          <div>
+            <!-- Buttons with Increased Width and Background Color -->
+            <button class="btn btn-lg btn-primary me-2" style="background-color: #d2b48c; border-color: #d2b48c;">New Task</button>
+            <button class="btn btn-lg btn-secondary" style="background-color: #d2b48c; border-color: #d2b48c;">Refresh</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-end">
+            <!-- Search Bar with Icon (Reduced Width and Aligned to Right) -->
+            <div class="col-md-3">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search tasks">
+                <span class="input-group-text">
+                  <i class="bi bi-search"></i> <!-- Bootstrap Search Icon -->
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Section: Task List Table -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Task List</h5>
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-hover mb-0 custom-table">
+            <thead class="table-light">
+              <tr>
+                <th>Assigned To</th>
+                <th>Status</th>
+                <th>Due Date</th>
+                <th>Priority</th>
+                <th>Comments</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let task of paginatedTasks">
+                <td>{{ task.assignedTo }}</td>
+                <td>{{ task.status }}</td>
+                <td>{{ task.dueDate }}</td>
+                <td>{{ task.priority }}</td>
+                <td>{{ task.comments }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer d-flex justify-content-end gap-0">
+          <!-- Increased width and border applied to buttons -->
+          <button class="btn btn-sm btn-secondary border border-dark px-3" (click)="firstPage()" [disabled]="currentPage === 1">First</button>
+          <button class="btn btn-sm btn-secondary border border-dark px-3" (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+          <span class="align-self-center mx-2">Page {{ currentPage }} of {{ totalPages }}</span>
+          <button class="btn btn-sm btn-secondary border border-dark px-3" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+          <button class="btn btn-sm btn-secondary border border-dark px-3" (click)="lastPage()" [disabled]="currentPage === totalPages">Last</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
